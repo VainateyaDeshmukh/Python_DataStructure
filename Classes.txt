@@ -1,0 +1,73 @@
+class Emp:
+    company='Bharat Electronics Ltd, Pune' #class attributes
+    def __init__(self):
+        #object attributes
+        self.id =10
+        self.name = 'Gaurav Tarkas'
+
+
+
+    def display(self):
+        print(self.id)
+        print(self.name)
+
+emp1=Emp()
+type(emp1)
+print(emp1.id)
+print(emp1.name)
+print(emp1.display())
+
+emp2=Emp()
+emp2.company='Inavit Systems India Pvt. Ltd'
+emp2.name='Shardul Khade'
+print(emp1.name)
+print(emp1.company)
+print(emp2.name)
+print(emp2.company)
+
+#Inheritance
+
+class Mgr(Emp):
+    def __init__(self):
+        super().__init__()
+        self.exp=25
+    def info(self):
+        print(self.exp)
+        print(self.name)
+
+mgr1=Mgr()
+print(mgr1.name)
+print(mgr1.exp)
+mgr1.name='Lalit Patil'
+print(mgr1.name)
+
+class Shape():
+    def __init__(self):
+        self.colour='Red'
+
+class Rectangle(Shape):
+    def __init(self):
+        super().__init__()
+        self.length=0
+        self.width=0
+    def getarea(self):
+        return(self.length*self.width)
+
+class Circle(Shape):
+    def __init(self):
+        super().__init__()
+        self.radius=0
+
+    def getarea(self):
+        return(3.14*r.radius*r.radius)
+
+rect1=Rectangle()
+rect1.length=10
+rect1.width=10
+b=rect1.getarea()
+print('Area is ',b)
+
+circ1=Circle()
+r1=10
+c=circ1.getarea()
+print("Area is ",c)

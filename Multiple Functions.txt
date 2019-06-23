@@ -1,0 +1,181 @@
+# num = [5,12,17,18,24,32]
+#
+# def myfunc(x):
+#     if(x%2==0):
+#         return True
+#     else:
+#         return False
+#
+# even=filter(myfunc,num)
+# lst=list(even)
+# print(lst)
+# for k in even:
+#     print (k)
+#
+# num1=[1, 2, 3, 4]
+# result1=map(lambda x:x*x,num1)
+# lstrslt1=list(result1)
+# print(lstrslt1)
+#
+# n1=2
+# n2='5'
+# f1=float(n1)
+# f2=float(n2)
+# n3=int(n2)
+# s1=str(7)
+# s2=str(8.5)
+# type(n1)
+# type(f1)
+# type(s1)
+#
+# a1='pune'
+# a2='pune '
+# a12=a1==a2
+# a3=(a2).strip()
+# a12=a1==a3
+#
+# s1='Welcome to core python lerning'
+# s10='core'
+# aa1=s1.find(s10)
+# aa2=s1.index(s10)
+# 'core' in s1
+#
+# s1='Welcome to core to core'
+# z1=s1.count('core')
+# s2=s1.replace('core','basic')
+# s3=s1.split()
+# print(s3)
+# s4='one,two,three'
+# s5=s4.split(",")
+#
+# str1=('one','two','three')
+# str2='-'.join(str1)
+# str3=' '.join(str1)
+#
+# id1=10
+# stock='sbi'
+# price=152.5725
+# str1='Stock Info: {},{},{}'.format(id1,stock,price)
+# print(str1)
+# str1='{0},{2},{1}'.format(id1,stock,price)
+# print(str1)
+# str1='{},{},{:.2f}'.format(id1,stock,price)
+# print(str1)
+# str1='Stock Indo: %s , %s , %s'%(id1,stock,price)
+# print(str1)
+#
+# from datetime import *
+# print(datetime.now())
+# now=datetime.now()
+# print('Date : {}/{}/{}'.format(now.day,now.month,now.year))
+# print('Time: {}:{}:{}'.format(now.hour,now.minute,now.second))
+# dt=date.today()
+# print(dt)
+#
+# dt1=date(2018,9,15)
+# print(dt1)
+# dt2=date(2018,9,20)
+# diff=dt2-dt1
+# diff.days
+# print(dt1==dt2)
+# print(dt1<dt2)
+# dt2.day
+# dt2.month
+# dt2.year
+#
+# try:
+#     a=1
+#     b=0
+#     print(a/b)
+#     print(a)
+# except:
+#      print("You Divided by 0")
+
+#
+# try:
+#     a=1
+#     b=0
+#     print(a)
+#     print(a/b)
+#     #print('10'+10)
+# except TypeError:
+#     print("You added values of incompatible types")
+# except ZeroDivisionError:
+#     print('You Divided by 0')
+
+# try:
+#     a=1
+#     b=0
+#     print(a/b)
+# except ZeroDivisionError:
+#     b=1
+#     print(a/b)
+#     print("b value changed to 1 because you divided by 0")
+# finally:
+#     print('This will print no matter what')
+
+# try:
+#     #print('10'+10)
+#     print(1/0)
+#     print('Test')
+# except Exception as e:
+#     f=open('log2.txt','w')
+#     f.write('Error: %s-%s'%('TCS',e))
+#     f.close()
+#
+# finally:
+#     print('This will print no matter what')
+
+
+
+
+
+def matamt(age,principal):
+    NoOfYears=1
+    if(age>60):
+        irate=8
+    else:
+        irate=7
+    ma=principal*(1+irate/100)**NoOfYears
+    return(ma)
+
+
+import pandas as pd
+data1=pd.read_csv("FD1.csv")
+matlst1=[]
+n=len(data1)
+i=0
+data1['MaturityAmount']=data1.apply(lambda x: matamt(x['Age'],x['Principal']),axis=1)
+#for i in range(0,n):
+ #   age=data1.loc[i,'Age']
+  #  prp=data1.loc[i,'Principal']
+   # matlst1.append(matamt(age,prp))
+#data1['MatAmount']=pd.Series(matlst1)
+#data1['TDS']=data1.apply(lambda a: a['MatAmount']*0.1,axis=1)
+#data1.drop(['TDS'],axis=1,inplace=True)
+
+data1.to_csv('FD2.csv')
+
+
+
+
+# import pandas as pd
+# df1=pd.read_csv("C:\MM555\stock1.csv")
+# Stk=[]
+# n=len
+# # lstStk=df1['Stock'].tolist()
+# # type(lstStk)
+# # lstAmt=df1['Amount'].tolist()
+# # lstPrice=df1['Price'].tolist()
+# lstQnt=[]
+# len1=len(lstStk)
+# f=open('log3.txt','w+')
+# for i in range(0,len1):
+#     try:
+#         lstQnt.append(round(lstAmt[i]/lstPrice[i]))
+#     except Exception as e:
+#         lstQnt.append(e)
+#         f.write('Error: %s-%s'%(lstStk[i],e)+"\n")
+# f.close()
+# df1['Qnt']=lstQnt
+# df1.to_csv('C:\MM555\stock2.csv')

@@ -1,0 +1,22 @@
+def matamt(age,principal):
+    NoOfYears=1
+    if(age>60):
+        irate=8
+    else:
+        irate=7
+    ma=principal*(1+irate/100)**NoOfYears
+    return(ma)
+
+
+import pandas as pd
+data1=pd.read_csv("FD1.csv")
+matlst1=[]
+n=len(data1)
+i=0
+for i in range(0,n):
+    age=data1.loc[i,'Age']
+    prp=data1.loc[i,'Principal']
+    matlst1.append(matamt(age,prp))
+data1['MatAmount']=pd.Series(matlst1)
+data1.to_csv('FD1.csv')
+

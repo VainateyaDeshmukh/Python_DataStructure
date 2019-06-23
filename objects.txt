@@ -1,0 +1,226 @@
+DICTIONARY Code:
+dict1={'Python':10000,'R':10000,'SQL':8000,'Excel':6000}
+print(dict1['SQL'])
+print(dict1.get('SQL'))
+dict1['Tableau']=5000
+dict1['R']
+dict1['R']=9500
+dict1
+del dict1['R']
+dict1.pop('SQL')
+dict1.items()
+dict1.keys()
+dict1.values()
+------------------------------------------------------
+MAKING DICTIONARY OF 2 LISTS
+dlst1=['Python','R','SQL','Excel']
+dlst2=[10000,10000,8000,6000]
+z=zip(dlst1,dlst2)
+diclst=dict(z)
+print(diclst)
+------------------------------------------------------
+CALCULATING MATURITY AMOUNT
+age=int(input('Enter your age:'))
+principal=int(input('Enter principal amount:'))
+NoOfYears=int(input('Enter number of years:'))
+if age>65 and age<100:
+    irate=8
+elif age==65:
+        irate=7.5
+elif age>100:
+    print('You are immortal!!')
+elif age<65:
+    irate=7
+
+ma=principal*(1+irate/100)**NoOfYears
+print('The amount will be:',ma)
+--------------------------------------------------------
+for i in range(1,3):
+    print(i)
+--------------------------------------------------------
+FACTORIAL CODE
+numbers=int(input("Enter Number to calculate factorial:"))
+total=1
+for val in range(numbers,0,-1):
+    total=total*val
+
+print("The factorial is:",total)
+-------------------------------------------------------------
+ALTERNATE METHOD TO CREATE LIST
+list1=list(range(0,10,1))
+-------------------------------------------------------------
+ADDITION OF ELEMENTS USING FOR LOOP
+numbers=[6,5,3,8,4]
+total=0
+for i in range (0,5):
+    total=total + numbers[i]
+
+print('The total is:',total)
+-------------------------------------------------------------
+CALCULATION OF MATURITY AMOUNT BY LIST USING RANGE
+age1=list(range(50,70,5))
+principal=1000
+NoOfYears=1
+elst=[]
+i=0
+n=len(age1)
+for i in range(0,n):
+    if age1[i]>65:
+        irate=8
+    elif age1[i]==65:
+        irate=7.5
+    else:
+        irate=7
+    ma=principal*(1+irate/100)**NoOfYears
+    print(ma)
+    elst.append(ma)
+
+print(age1)
+print(elst)
+
+age = list(range(50, 70, 5))
+principal = 1000
+NoOfYears = 1
+elst = []
+for val in age:
+    if val > 65:
+        irate = 8
+    elif val == 65:
+        irate = 7.5
+    else:
+        irate = 7
+    ma = principal * (1 + irate / 100) ** NoOfYears
+    print(ma)
+    elst.append(ma)
+
+print(age)
+print(elst)
+
+z=zip(age,elst)
+lst3=dict(z)
+print(lst3)
+-------------------------------------------------------------------
+WHILE LOOP
+x=0
+while(x<4):
+    print(x)
+    x=x+1
+
+---------------------------------------------------------------------
+Project 2
+CALCULATION OF MATURITY AMOUNT AND APPROVAL LIST BY GIVEN LIST
+age3=[45,55,60,62,70]
+principal=1200
+NoOfYears=1
+TotalAmount=0
+i=0
+Approved=[]
+while(TotalAmount < 4000):
+    if age3[i]>60:
+        irate=8
+    elif age3[i]==60:
+        irate=7.5
+    else:
+        irate=7
+    ma3=principal*(1+irate/100)**NoOfYears
+    TotalAmount=TotalAmount+ma3
+    if(TotalAmount>4000):
+        break
+    i=i+1
+    Approved.append('Yes')
+
+print(Approved)
+-----------------------------------------------------------------------------
+CALCULATION OF MAT AMOUNT USING FUNCTIONS AND "PANDAS"
+
+def matamt(age,principal):
+    NoOfYears=1
+    if(age>60):
+        irate=8
+    else:
+        irate=7
+    ma=principal*(1+irate/100)**NoOfYears
+    return(ma)
+
+
+import pandas as pd
+data1=pd.read_csv("FD1.csv")
+matlst1=[]
+n=len(data1)
+i=0
+data1['MaturityAmount']=data1.apply(lambda x: matamt(x['Age'],x['Principal']),axis=1)
+#for i in range(0,n):
+ #   age=data1.loc[i,'Age']
+  #  prp=data1.loc[i,'Principal']
+   # matlst1.append(matamt(age,prp))
+#data1['MatAmount']=pd.Series(matlst1)
+#data1['TDS']=data1.apply(lambda a: a['MatAmount']*0.1,axis=1)
+#data1.drop(['TDS'],axis=1,inplace=True)
+
+data1.to_csv('FD2.csv')
+
+--------------------------------------------------------------------------------------
+CALCULATION OF PRODUCT DISCOUNT AMOUNT
+proprice=[10000,8000,5000,18000]
+disc=[10,20,8,10]
+i=0
+j=0
+n=len(proprice)
+m=len(disc)
+finprice=0
+elst=[]
+discamt=0
+for i in range(0,n):
+    for j in range(0,i+1):
+        discamt=proprice[i]*disc[j]/100
+        if(discamt>1500):
+            discamt=1500
+
+    elst.append(discamt)
+print(elst)
+----------------------------------------------------------------------------------
+CALCULATION OF INVESTED STOCKS
+totalinv=50000
+stkprice=[100,105,102,108,110]
+i=0
+invamt=0
+remamt=0
+stkpur=0
+while(invamt<totalinv):
+    remamt=totalinv-invamt
+    if((stkprice[i]*100) > remamt):
+        stkpur=stkpur+round(remamt/stkprice[i])
+        break
+    else:
+        invamt=invamt+stkprice[i]*100
+        stkpur=stkpur+100
+    i=i+1
+
+print(stkpur)
+------------------------------------------------------------------------------------------
+PANDAS
+def mymarks (marks):
+    if marks>40:
+        return('Pass')
+    else:
+        return('Fail')
+
+
+import pandas as pd
+data1=pd.read_csv("rollno.csv")
+n=len(data1)
+marklist=[]
+i=0
+for i in range(0,n):
+    marks=data1.loc[i,'Marks']
+    marklist.append(mymarks(marks))
+data1['Result'] = pd.Series(marklist)
+data1.to_csv('resultlist2.csv')
+---------------------------------------------
+LAMBDA
+f=lambda x: x*x
+print(f(5))
+
+f1=lambda x,y: x+y
+print(f1(5,6))
+------------------------------------------------------
